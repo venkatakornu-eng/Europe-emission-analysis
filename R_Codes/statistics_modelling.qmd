@@ -1,0 +1,250 @@
+---
+title: "Week 4 – Statistics: Distributions & First Model"
+author: "ods-team-48 / Venkata Santosh Kumar Kornu/AKHILESWARA REDDY LINGIREDDY/SOURABH SHRINIVAS KULKARNI/"
+date: "`r format(Sys.Date())`"
+format:
+  html:
+    toc: false
+    toc-depth: 2
+---
+
+## Overview {.unnumbered}
+
+::: callout-note
+### What this file is for
+
+
+
+This week is hands-on with **statistics**. You will:
+- Measure spread (**SD, IQR**) for two numerical variables
+- Visualise **distribution shapes** (histograms + Normal overlays)
+- Fit a **simple linear regression** (e.g., `grade ~ study_hours`)
+- Inspect **residuals** to check model fit
+- Record brief **group reflections**
+
+Work with your **cleaned Week 2 dataset** (no impossible or extreme values).
+:::
+
+---
+
+# Dataset & Setup
+
+Use your cleaned dataset prepared in Week 2. Mind the file path.
+
+```{r}
+library(tidyverse)
+
+# Load your cleaned dataset
+
+data = read_csv("data/processed/cleaned_data.csv")
+# Quick structure check
+glimpse(data)
+```
+
+```{r}
+head(data)
+```
+
+
+**Confirm (1–2 lines):** that the dataset loaded correctly (rows/columns) and that `grade` and `study_hours` are numeric.
+
+the dataset is loaded correctly , rows and columns are cleaned .
+
+---
+
+# Spread & Variability
+
+Compute summaries, SD, and IQRs for at least two two main variables from your dataset (e.g., `grade` and `study_hours`).
+
+After computing I got SD of Germany is 157047697 IQR of Germany is 69106277
+
+```{r}
+# Summaries
+summary(data$Germany)
+sd(data$Germany, na.rm = TRUE)
+IQR(data$Germany, na.rm = TRUE)
+
+summary(data$Year)
+sd(data$Year, na.rm = TRUE)
+IQR(data$Year, na.rm = TRUE)
+
+
+```
+
+**Comment (2–3 lines):** Which variable varies more? Are the ranges reasonable? What does the **IQR** say about the middle 50%?
+
+The variable Germany varies far more than Year
+
+The range of Germany is 666026516 which is extremely large.
+
+IQR of Germany is 69106277 which says that middle 50% of emission values are highly spread out.
+---
+
+```{r}
+boxplot(data$Germany)
+```
+
+# Distribution Shapes
+
+Plot histograms and compare with a Normal curve for the same variables.
+
+```{r}
+# Histogram and normal curve for variable 1
+hist(data$Germany, breaks = 15, prob = TRUE,
+main = "Total Emission by Germany", xlab = "Germany", col = "skyblue",
+border = "white")
+curve(dnorm(x, mean(data$Germany), sd(data$Germany)),
+add = TRUE, col = "red", lwd = 2)
+
+```
+
+```{r}
+Q1 <- quantile(data$Germany, 0.25)
+Q3 <- quantile(data$Germany,0.75)
+IQR <- Q3 - Q1
+
+lower_bound <- Q1 - 1.5* IQR
+upper_bound <- Q3 + 1.5 * IQR
+
+data_no_outliers <- subset(data,Germany >= lower_bound & Germany <= upper_bound)
+```
+
+
+
+**Comment (2–3 lines):** Is each variable roughly Normal, skewed, or heavy-tailed? Does the red curve fit well? Any gaps or outliers?
+
+The graph show the Right skewed, there are gaps and outliers in the graph.red curve doesn’t fit well.
+---
+
+```{r}
+boxplot(data_no_outliers$Germany)
+```
+
+```{r}
+cor(data)
+```
+
+# First Model (Simple Linear Regression)
+
+Fit a simple linear model (use appropriate variables and reason your choice).
+
+```{r}
+# create a model using lm and provide summary
+model <- lm(Germany ~ Year, data = data)
+# Inspect key results
+summary(model)
+
+
+```
+
+```{r}
+model <- lm(Germany ~ Year, data = data_no_outliers)
+# Inspect key results
+summary(model)
+```
+
+```{r}
+plot(data$Year, data$Germany,
+xlab = "Total Emission per Year", ylab = "Germany",
+main = "Yearly Emission vs Germany", pch = 19, col = "darkgrey")
+abline(model, col = "red", lwd = 2)
+```
+
+```{r}
+plot(data_no_outliers$Year, data_no_outliers$Germany,
+xlab = "Total Emission per Year", ylab = "Germany",
+main = "Yearly Emission vs Germany", pch = 19, col = "darkgrey")
+abline(model, col = "red", lwd = 2)
+```
+```{r}
+coef(model)
+```
+
+
+**Interpretation (3–4 lines):**
+Model with outliers:
+
+- Intercept (β₀) = 5943752819 means that when Year = 0, the predicted emission value for Germany would be about 5.94 billion.
+
+- Slope (β₁) = –2.91 × 10⁶ means for each passing year, Germany’s emissions are predicted to decrease by about 2.9 million units on average.
+
+- (Optional) Is the slope statistically significant (p-value)? the p- value is 0.517 is greater than 0.05 so the slope is not statistically significant, meaning there’s no strong evidence of a linear trend
+
+- (Optional) How much variation does the model explain (R²)? The model give R^2 value as 0.0028
+
+Model without Outliers:
+
+- Intercept (β₀) = -2.301 × 10⁹ means when Year = 0, the predicted emission value for Germany would be about –2.3 billion,
+
+- Slope (β₁) = 1.147 × 10⁶ means every year, Germany’s emissions are predicted to increase by about 1.15 million units on average.
+
+- (Optional) Is the slope statistically significant (p-value)? the p-value is 0.202
+
+- (Optional) How much variation does the model explain (R²)? the model R^2 is 0.0135
+
+After removing outliers, the trend is slightly upwards.
+
+::: callout-note
+### What is a model?
+
+A **model** is a simplified, mathematical explanation of how things relate or behave.  
+It is **expressed mathematically** (equation/algorithm), **summarises** relationships, **simplifies** what matters, **generalises (within limits)**, and **must be interpretable**.
+
+> A good model is clear, honest, and useful — not a perfect copy of reality, but a way to think better about it.
+:::
+
+---
+
+# Model Fit (Residuals)
+
+Residuals are **errors** = observed − predicted. They should look like random noise around 0.
+
+```{r}
+# Plot the residuals including abline
+plot(model$residuals/1e6,
+main = "Residuals from Regression Model",
+ylab = "Residual (error)",
+xlab = "Index (observation)",
+col = "purple", pch = 19)
+abline(h = 0, col = "red", lty = 2)
+
+```
+
+**Comment (2–3 lines):** Are residuals roughly centred around 0 and randomly scattered? Any patterns or extreme points? What does this suggest about model fit?
+
+The residuals is not centered around 0, There is two extreme positive residual at 150 which is clear outlier that means residuals are not evenly scattered.
+---
+
+# Group Reflection
+
+Keep answers short and specific (1–2 sentences each).
+
+| Question | Reflection |
+|:--|:--|
+| **Distributions:** What did shapes reveal about variation or consistency? | |
+
+|Boxplot shows there are so many outliers in the Germany’s data values and after removing there outliers, the distribution became more consistent and withh less spread and fewer extreme values.|
+
+| **Model:** What does your regression line suggest about the relationship? | 
+
+|The regression line with outlier and without outlier have a different results like the line before outliers removed showed very weak negative trend while after cleaning, it indicated a slight positive trend. But in both case, the relationship between year and emission was not statistically significant.||
+
+| **Learning:** What was the main thing you learned about your dataset this week? | |
+
+|I have learned that outliers can heavily influence regression results and distort trends.Cleaning the data improves interpretation but doesn’t always create a significant relationship|
+
+---
+
+# Expected Outputs
+
+Your file should include (at least):
+- Two distribution plots
+- One scatterplot with fitted regression line
+- One residual plot
+- Regression summary with brief interpretation
+- Completed reflection table
+
+---
+
+# You are free to explore further along modeling (e.g., trying different variable combinations, or trying multiple regression, or different models available in R libraries).
+# You may also explore along p-values and R².

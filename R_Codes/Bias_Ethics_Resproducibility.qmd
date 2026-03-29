@@ -1,0 +1,154 @@
+---
+title: "week_05"
+author: "Venkata Santosh Kumar Kornu"
+format: html
+---
+
+## Overview {.unnumbered}
+
+### What this file is for
+
+This week is hands-on with **Bias**,**Fairness**,**Ethics** **&** **Resproducibility**. We have Did:
+
+-   Detect imbalance vs. bias and relate it to project purpose.
+-   Explain fairness notions (representation vs outcome fairness).
+-   Perform hypothesis tests and interpret confidence intervals.
+-   Use a fixed random seed to make analyses reproducible.
+-   Observe how different seeds affect results and train/test splits.
+-   Save a lightweight reproducibility log (session info) to your repo.
+
+```{r}
+library(tidyverse)
+library(dbplyr)
+data <- read_csv("data/processed/cleaned_data.csv")
+glimpse(data)
+```
+
+```{r}
+library(tidyr)
+
+data_long <- data |>
+  pivot_longer(
+    cols = -Year,
+    names_to = "Country",
+    values_to = "Emission"
+  )
+```
+
+## Imbalance vs Bias
+
+## Descriptive distribution
+
+```{r}
+tbl <- table(data_long$Country)
+barplot(tbl, main = "Group Distribution (Country)", ylab = "Count",
+col = "lightblue", border = "white")
+round(prop.table(tbl), 2)
+```
+
+The file have equal or balanced number of values among all country and equal amount of data collected in all country. There is no difference among countries. There is no **Bias** in the data.
+
+## Fairness - Random Split + Seed
+
+```{r}
+
+set.seed(10) # ensures your peers obtain the same random split
+data_cat <- data |> mutate(group = sample(c("A", "B"), n(), replace = TRUE))
+data_cat |>
+group_by(group) |>
+summarise(avg_Germany = mean(Germany, na.rm = TRUE))
+```
+
+we have created or splitted the data into two group that is Group A and Group B
+
+Group A is 71273452 Group B is 84076017
+
+```{r}
+boxplot(Germany ~ group, data = data_cat,
+        main = "Germany Emissions by Group",
+        xlab = "Group",
+        ylab = "Emission",
+        col = c("lightblue", "lightgreen"))
+
+```
+
+This graph showing boxplot of to different groups.
+
+## Reproducibility Log
+
+```{r}
+set.seed(42)
+sample_data <- dplyr::sample_n(data_long, 30)
+# (2) Simple model
+model <- lm(Emission ~ Year, data = sample_data)
+summary(model)$coefficients
+
+# (3) Save reproducibility details (seed + session info)
+sink("session-info.txt")
+cat("=== Reproducibility Log ===\n")
+cat("Random seed used: 42\n")
+cat("Date:", Sys.Date(), "\n\n")
+sessionInfo()
+sink()
+# Confirm file creation (returns TRUE if created)
+file.exists("session-info.txt")
+```
+
+The Intercept is 6619647225 that means emission happen at 0 year.It just helps define the regression line.
+
+The Slop is -3271592 This means decrease by about 3.27 million units per year on average.
+
+t value is -1.197 that means how strongly year explains Emission change.
+
+## Hypothesis Testing & Confidence Intervals
+
+```{r}
+cor.test(data$Year, data$Germany)
+
+```
+
+The Pearson's correlation between Year and Germany in your dataset. cor = -0.0533, this says very weak negative correlation between year and Germany where year increase the germany values tends to decrease.
+
+```{r}
+t.test(Emission ~ Country, data = subset(data_long, Country %in% c("Germany", "Belgium")))
+
+```
+
+The Weich t-test compares the Emission betwween Belgium and Germany. The p-value (**4.206e-07**) which is very small than 0.05 this means the difference in emission between Belgium and Germany is **highly statiscally** significant.
+
+The mean of both Belgium (9071058) and Germany (77333333) says Germany emits far more than Belgium.
+
+```{r}
+set.seed(10)
+m1 <- lm(Emission ~ Year, data = dplyr::sample_n(data_long, 30))
+
+set.seed(99)
+m2 <- lm(Emission ~ Year, data = dplyr::sample_n(data_long, 30))
+
+summary(m1)$coefficients
+summary(m2)$coefficients
+```
+
+# Model 1 
+
+Intercept is 1692630790.5
+
+Year is -836756 this mean for every increase in unit in year , the dependent variable decreases by 836756 units.
+
+p-value is 0.3098 > 0.05, so not statistically significant.
+
+# Model 2
+
+Intercept is -1006991705.2
+
+Year is +501903 this mean for every increase in unit in year , the dependent variable increase by 501903 units.
+
+p-value is 0.5159 > 0.05, so not statistically significant.
+
+From both **Model 1** is slightly decreased per year and **Model 2** is slightly increase per year.
+
+## Conclusion
+
+-   Changing the random seed changes which subset of data gets sampled, slightly altering the model. Fixing a seed (e.g., set.seed(42)) makes results reproducible.
+-   Equal data distribution across countries supports fair analysis.
+-   Simple linear regression indicates minor year-to-year variation in emissions

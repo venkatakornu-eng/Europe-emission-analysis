@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Venkata Santosh Kumar Kornu">
+
+<title>Week 7 – Visualisation &amp; Storytelling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="week7-visualisation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week7-visualisation_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="week7-visualisation_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="week7-visualisation_files/libs/quarto-html/popper.min.js"></script>
+<script src="week7-visualisation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="week7-visualisation_files/libs/quarto-html/anchor.min.js"></script>
+<link href="week7-visualisation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week7-visualisation_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="week7-visualisation_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="week7-visualisation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="week7-visualisation_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 7 – Visualisation &amp; Storytelling</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Venkata Santosh Kumar Kornu </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><em>(Individual Submission)</em></p>
+<p>This file contains the required structure for your Week 7 submission. Replace all placeholder text with your own work.</p>
+<hr>
+<section id="dataset-used" class="level1">
+<h1>Dataset Used</h1>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are expected to use the same dataset that you used during previous weeks. However, you may switch to another dataset if you can justify the switch. The new dataset (if switched to) must adhere to the same theme as before.</p>
+</div>
+</div>
+<p>Briefly describe the dataset you are visualising in the callout below (2–4 sentences). If switching datasets, complete the note below.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dataset Description and Link
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I am using the same dataset.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dataset Switch Note (Only if applicable)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Why the original dataset could not be used responsibly</li>
+<li>Why this new dataset fits the same theme</li>
+<li>Source + license</li>
+</ul>
+</div>
+</div>
+<hr>
+<section id="improved-visuals-from-previous-weeks" class="level2">
+<h2 class="anchored" data-anchor-id="improved-visuals-from-previous-weeks">Improved Visuals from Previous Weeks</h2>
+<p><em>(Minimum 1, Maximum 3)</em></p>
+<p>Please provide reference to the visuals you choose to improve from previous submissions with traceable and clear reference.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What “improvement” of a previous plot means (click to reveal)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You may re-include 1 to 3 visuals from Week 2 or Week 4, but only if you improve them. In Week 7, “improvement” does not mean changing the data or re-running the same code. It means making the visualisation clearer, fairer, more accurate, or more purposeful.</p>
+<p>You may improve a plot by:</p>
+<ul>
+<li><p>Fixing misleading or confusing scales (e.g., avoiding truncated axes, using appropriate limits).</p></li>
+<li><p>Choosing a more suitable chart type (e.g., boxplot instead of bar chart for comparisons).</p></li>
+<li><p>Improving aesthetics (cleaner themes, readable labels, consistent font sizes).</p></li>
+<li><p>Clarifying colour choices (e.g., use of high-contrast or colour-blind-friendly palettes).</p></li>
+<li><p>Adding informative titles or subtitles (summarising the key message).</p></li>
+<li><p>Fixing labelling issues (rename ambiguous variables, use meaningful captions).</p></li>
+<li><p>Removing clutter or chart junk (superfluous gridlines, 3D effects, unnecessary backgrounds).</p></li>
+<li><p>Highlighting or annotating important features (e.g., a noticeable outlier, a trend, or a threshold).</p></li>
+<li><p>Ensuring ethical clarity (e.g., appropriate grouping, non-stereotypical colour use).</p></li>
+</ul>
+<p>Your task is simply:</p>
+<p>Take a plot you created earlier and improve how clearly, honestly, and effectively it communicates its insight. You may keep the same chart type or change it to a better one — explain your choice in the bullet points that follow.</p>
+</div>
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/cleaned_data.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 33
+$ Year        &lt;int&gt; 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023…
+$ Belgium     &lt;dbl&gt; 69202786.1, 71895703.3, 71627061.7, 71658116.7, 73544083.5…
+$ Bulgaria    &lt;dbl&gt; 44482999.1, 47144934.2, 44822120.9, 46720379.4, 42562493.0…
+$ Czechia     &lt;dbl&gt; 85070438, 83960285, 86095391, 84522238, 85917613, 80891193…
+$ Denmark     &lt;dbl&gt; 64676053, 68280863, 73463290, 72654851, 73425967, 70299345…
+$ Germany     &lt;dbl&gt; 662356551, 666026516, 657452632, 649273598, 627782259, 565…
+$ Estonia     &lt;dbl&gt; 18498406.48, 15290103.52, 16962030.11, 18053840.73, 171288…
+$ Ireland     &lt;dbl&gt; 34023275.50, 35807246.72, 39796178.43, 41808714.75, 425013…
+$ Greece      &lt;dbl&gt; 74441473.76, 70951375.82, 68985864.96, 74376892.38, 739977…
+$ Spain       &lt;dbl&gt; 200881452, 215782322, 204417582, 219079617, 212811391, 196…
+$ France      &lt;dbl&gt; 253017054.3, 253820658.1, 253953753.3, 263741587.5, 256242…
+$ Croatia     &lt;dbl&gt; 13118487.3, 12977202.7, 13042454.5, 13659990.3, 12705855.5…
+$ Italy       &lt;dbl&gt; 257962868, 262962327, 260583344, 261483093, 256155930, 249…
+$ Cyprus      &lt;dbl&gt; 5442692.42, 5250016.58, 5594924.22, 5825333.14, 5874594.89…
+$ Latvia      &lt;dbl&gt; 6955643.01, 7251349.11, 7083570.54, 7215957.33, 7823740.00…
+$ Lithuania   &lt;dbl&gt; 12026747.06, 12622365.30, 12296092.30, 12958343.10, 141055…
+$ Luxembourg  &lt;dbl&gt; 6780910.00, 7631415.00, 7474114.00, 7450554.00, 7588714.00…
+$ Hungary     &lt;dbl&gt; 35922158.6, 37842949.0, 37505459.5, 39524581.0, 39888109.4…
+$ Malta       &lt;dbl&gt; 2427883.48, 1687126.99, 1345031.45, 1488089.10, 1615909.14…
+$ Netherlands &lt;dbl&gt; 147652569, 153250033, 152738167, 150141833, 146206402, 143…
+$ Austria     &lt;dbl&gt; 44339328.2, 45406103.5, 44618393.3, 47695358.1, 45168202.9…
+$ Poland      &lt;dbl&gt; 269909388, 273372566, 284120186, 300712032, 300861879, 287…
+$ Portugal    &lt;dbl&gt; 42545787, 46848143, 44624918, 49669685, 46103948, 42352945…
+$ Romania     &lt;dbl&gt; 66203202.4, 64824876.9, 63038788.3, 65048380.7, 64811227.6…
+$ Slovenia    &lt;dbl&gt; 9750627.34, 9923024.34, 10392081.77, 10598340.59, 10875014…
+$ Slovakia    &lt;dbl&gt; 26665689.06, 27806964.93, 28362529.42, 29340846.19, 297070…
+$ Finland     &lt;dbl&gt; 44900715.3, 41641665.2, 44945858.6, 42234732.8, 43604005.6…
+$ Sweden      &lt;dbl&gt; 37062214.2, 37544045.9, 38828540.6, 37409442.0, 37257668.5…
+$ Iceland     &lt;dbl&gt; 4247572.52, 4495222.77, 5131369.32, 5502454.26, 5744632.24…
+$ Norway      &lt;dbl&gt; 53786251, 60809262, 52388807, 55009483, 58284266, 58492593…
+$ Switzerland &lt;dbl&gt; 27052658.14, 26746007.98, 26938847.50, 26450944.43, 261543…
+$ Serbia      &lt;dbl&gt; 35919684.6, 43665398.0, 44757929.0, 45630398.4, 45175655.5…
+$ Turkiye     &lt;dbl&gt; 280146977, 310123230, 323151517, 337000661, 333548997, 312…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Year         Belgium            Bulgaria           Czechia        
+ Min.   :2014   Min.   :   68595   Min.   :    5509   Min.   :   36888  
+ 1st Qu.:2016   1st Qu.:  409195   1st Qu.:   36942   1st Qu.:  158943  
+ Median :2018   Median : 1845441   Median :  267631   Median : 1106311  
+ Mean   :2018   Mean   : 9071058   Mean   : 5604223   Mean   :10620182  
+ 3rd Qu.:2021   3rd Qu.: 6394402   3rd Qu.: 6582330   3rd Qu.: 7866514  
+ Max.   :2023   Max.   :74209542   Max.   :47144934   Max.   :86095391  
+    Denmark            Germany             Estonia            Ireland        
+ Min.   :   43764   Min.   :   387564   Min.   :    3376   Min.   :   11869  
+ 1st Qu.:  120383   1st Qu.:  2482254   1st Qu.:   29791   1st Qu.:  112869  
+ Median : 1358110   Median :  5158890   Median :   78968   Median :  306091  
+ Mean   : 8949786   Mean   : 77333333   Mean   : 1799562   Mean   : 4881886  
+ 3rd Qu.: 4533187   3rd Qu.: 71588531   3rd Qu.: 1272369   3rd Qu.: 6648506  
+ Max.   :73463290   Max.   :666026516   Max.   :18498407   Max.   :42501390  
+     Greece             Spain               France             Croatia         
+ Min.   :     388   Min.   :   166161   Min.   :   213799   Min.   :9.879e+02  
+ 1st Qu.:   51423   1st Qu.:   771715   1st Qu.:  1073441   1st Qu.:8.250e+04  
+ Median :  153796   Median :  3030820   Median :  8327785   Median :3.345e+05  
+ Mean   : 8620639   Mean   : 25465089   Mean   : 31435973   Mean   :1.671e+06  
+ 3rd Qu.:14145220   3rd Qu.: 29180226   3rd Qu.: 24260047   3rd Qu.:1.325e+06  
+ Max.   :74441474   Max.   :219079617   Max.   :263741588   Max.   :1.366e+07  
+     Italy               Cyprus            Latvia          Lithuania       
+ Min.   :   211890   Min.   :   1586   Min.   :   4456   Min.   :    9343  
+ 1st Qu.:   990614   1st Qu.:  16313   1st Qu.:  33659   1st Qu.:   33019  
+ Median :  5928861   Median :  51678   Median : 106857   Median :   83280  
+ Mean   : 32638483   Mean   : 737028   Mean   : 926098   Mean   : 1865031  
+ 3rd Qu.: 35975189   3rd Qu.: 266289   3rd Qu.: 989151   3rd Qu.: 1181306  
+ Max.   :262962327   Max.   :5874595   Max.   :7888436   Max.   :16396189  
+   Luxembourg         Hungary             Malta            Netherlands       
+ Min.   :   6000   Min.   :   75921   Min.   :    251.6   Min.   :   145727  
+ 1st Qu.:  31367   1st Qu.:  243324   1st Qu.:   8153.6   1st Qu.:   755075  
+ Median :  70700   Median :  783040   Median :  26834.3   Median :  2850696  
+ Mean   : 967612   Mean   : 4822111   Mean   : 282645.0   Mean   : 18120359  
+ 3rd Qu.: 245925   3rd Qu.: 5741218   3rd Qu.:  72330.3   3rd Qu.: 23086291  
+ Max.   :8217502   Max.   :39888109   Max.   :3086872.3   Max.   :153250033  
+    Austria             Poland             Portugal           Romania        
+ Min.   :   18534   Min.   :   308048   Min.   :   12100   Min.   :  152681  
+ 1st Qu.:  161983   1st Qu.:   880517   1st Qu.:  143900   1st Qu.:  397416  
+ Median :  701534   Median :  2263052   Median : 1127676   Median :  903136  
+ Mean   : 5999773   Mean   : 37501951   Mean   : 5406318   Mean   : 8062608  
+ 3rd Qu.: 5831385   3rd Qu.: 21704927   3rd Qu.: 5869467   3rd Qu.: 5224760  
+ Max.   :48747124   Max.   :301953741   Max.   :49669685   Max.   :66203202  
+    Slovenia           Slovakia           Finland             Sweden        
+ Min.   :   25810   Min.   :    6425   Min.   :    3965   Min.   :   59342  
+ 1st Qu.:   66150   1st Qu.:  113471   1st Qu.:   62207   1st Qu.:  197316  
+ Median :  158109   Median :  289719   Median :  320348   Median :  893248  
+ Mean   : 1316300   Mean   : 3593596   Mean   : 5156794   Mean   : 4669296  
+ 3rd Qu.:  852266   3rd Qu.: 2477325   3rd Qu.: 7999115   3rd Qu.: 5260016  
+ Max.   :10875014   Max.   :29707095   Max.   :44945859   Max.   :38828541  
+    Iceland              Norway          Switzerland           Serbia        
+ Min.   :    901.4   Min.   :     164   Min.   :   68802   Min.   :    4614  
+ 1st Qu.:   5099.8   1st Qu.:   77709   1st Qu.:  276405   1st Qu.:   77571  
+ Median :  33230.3   Median :  819428   Median :  870200   Median :  207993  
+ Mean   : 641131.5   Mean   : 7184976   Mean   : 3183346   Mean   : 5765889  
+ 3rd Qu.: 463373.3   3rd Qu.:11489712   3rd Qu.: 3183346   3rd Qu.: 5765889  
+ Max.   :5744632.2   Max.   :60809262   Max.   :27052658   Max.   :45630398  
+    Turkiye         
+ Min.   :   139969  
+ 1st Qu.:   514814  
+ Median :  3731172  
+ Mean   : 42567331  
+ 3rd Qu.: 42567331  
+ Max.   :349242964  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>Year,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Country"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Emission"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> data_long <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Emission =</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(Emission)),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Year =</span> <span class="fu">as.integer</span>(Year)  </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="x-original-plot-1-from-week-2-or-4" class="level3">
+<h3 class="anchored" data-anchor-id="x-original-plot-1-from-week-2-or-4">2.x Original Plot 1 (from Week 2 or 4)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paste your original code here</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">boxplot</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> Emission <span class="sc">~</span> Country,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> <span class="at">data =</span> data_long,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> <span class="at">main =</span> <span class="st">"Emission distribution by Country"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> <span class="at">xlab =</span> <span class="st">"Country"</span>, <span class="at">ylab =</span> <span class="st">"Emission"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> <span class="at">las =</span> <span class="dv">2</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><em>Include a short reminder of what the original plot attempted to show.</em></p>
+</blockquote>
+</section>
+</section>
+<section id="the-plot-attempted-to-show-distribution-of-emission-values-for-each-country." class="level2">
+<h2 class="anchored" data-anchor-id="the-plot-attempted-to-show-distribution-of-emission-values-for-each-country.">The plot attempted to show distribution of emission values for each country.</h2>
+<section id="x-improved-plot-1-week-7" class="level3">
+<h3 class="anchored" data-anchor-id="x-improved-plot-1-week-7">2.x Improved Plot 1 (Week 7)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your improved plot code goes here</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_long, <span class="fu">aes</span>(<span class="at">x =</span> Country, <span class="at">y =</span> Emission,<span class="at">fill =</span> Country)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Country Values by Year"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Emission"</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="x-original-plot-2-from-week-2-or-4" class="level3">
+<h3 class="anchored" data-anchor-id="x-original-plot-2-from-week-2-or-4">2.x Original Plot 2 (from Week 2 or 4)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> data_summary <span class="ot">&lt;-</span> data_long <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">group_by</span>(Country) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">summarise</span>(<span class="at">mean_emission =</span> <span class="fu">mean</span>(Emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">barplot</span>(data_summary<span class="sc">$</span>mean_emission,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> <span class="at">names.arg =</span> data_summary<span class="sc">$</span>Country,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> <span class="at">main =</span> <span class="st">"Average Emission by Country"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> <span class="at">ylab =</span> <span class="st">"Mean Emission"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a> <span class="at">las =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="x-improved-plot-2-week-7" class="level3">
+<h3 class="anchored" data-anchor-id="x-improved-plot-2-week-7">2.x Improved Plot 2 (Week 7)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_long, <span class="fu">aes</span>(<span class="at">x =</span> Country, <span class="at">y =</span> Emission,<span class="at">fill =</span> Country)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"bar"</span>)<span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Frequency of Emission done by country"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Emission"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,<span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Include require text/code sections if you are adding more improved visuals from previous weeks.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_rank <span class="ot">&lt;-</span> data_long <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Country) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TotalEmission =</span> <span class="fu">sum</span>(Emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(TotalEmission)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_rank, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Country, TotalEmission), </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">y =</span> TotalEmission, </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fill =</span> TotalEmission)) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Countries Ranked by Total Emission (Low to High)"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Country"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Emission"</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"green"</span>, <span class="at">high =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What I Improved and Why (3–6 bullet points):
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>I improved the labels of the chat to more readable</li>
+<li>Adjusted scaling in the graph.</li>
+<li>Added different colour shade to each country.</li>
+<li>Now created two bar graph one added different colors to the bars based on country and another created bar based on total emission by countries and arranged in low to high with specified colour like low is <strong>Green</strong> and high is <strong>Red</strong></li>
+<li>So from above there are four countries which emits more they are <strong>Germany</strong> , <strong>Turkiye</strong>, <strong>Poland</strong>, <strong>Italy</strong> they emit more than other and <strong>Germany</strong> is in <strong>danger zone</strong>.</li>
+</ul>
+</div>
+</div>
+<hr>
+<p><strong>Include require text/code sections if you are adding more improved visuals from previous weeks.</strong></p>
+<hr>
+</section>
+</section>
+<section id="new-week-7-visuals" class="level2">
+<h2 class="anchored" data-anchor-id="new-week-7-visuals">New Week 7 Visuals</h2>
+<p>You must produce <strong>at least two new required visuals</strong>:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Possible New Plot Types for Week 7 (Click to reveal)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>(Choose the ones that fit your data best)</strong></p>
+<p>Depending on the nature of your dataset (categorical, numerical, time-based, grouped, or mixed), you may choose from the following plot types:</p>
+<p><strong>Relationship Visuals (for Required Plot A)</strong></p>
+<ul>
+<li>Scatterplot</li>
+<li>Scatterplot with regression line (lm)</li>
+<li>Scatterplot with LOESS smoothing (with visible span parameter)</li>
+<li>Scatterplot faceted by group</li>
+<li>Bubble chart (if one variable can act as size)</li>
+<li>Coloured scatterplot by category</li>
+<li>Pairwise scatterplot</li>
+<li>Hexbin or 2D density (for large datasets)</li>
+</ul>
+<p><strong>Distribution Comparison (for Required Plot B)</strong></p>
+<ul>
+<li>Boxplot</li>
+<li>Violin plot</li>
+<li>Half-violin + boxplot hybrid</li>
+<li>Density overlays</li>
+<li>Ridge plot (if you have multiple groups)</li>
+<li>Histogram comparison (but avoid overlapping clutter)</li>
+<li>Dotplot / beeswarm (for small samples)</li>
+</ul>
+<p><strong>You may add one optional visual, provided it is meaningful for your dataset:</strong></p>
+<ul>
+<li>Time series line chart</li>
+<li>Time series with responsible smoothing</li>
+<li>Grouped line chart</li>
+<li>Bar chart of counts (not means)</li>
+<li>Stacked or filled bar proportions</li>
+<li>Tile/heatmap (if you have two categorical variables)</li>
+<li>Treemap (for hierarchical counts)</li>
+<li>Scatterplot with model diagnostics (residuals, fitted vs.&nbsp;observed)</li>
+<li>Small multiples (facet grid)</li>
+<li>Correlation heatmap (only if your dataset has ≥4 numeric variables)</li>
+</ul>
+<p><strong>If none of the above fits your dataset, you can choose another plot type — as long as:</strong></p>
+<ul>
+<li>it is appropriate for what you want to show,</li>
+<li>it is honest and clear,</li>
+<li>you justify why it fits your data.</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> If required plots are not possible, please justify the alternatives and adjust the text and explanations accordingly.</p>
+<hr>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(data_long<span class="sc">$</span>Country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Belgium"     "Bulgaria"    "Czechia"     "Denmark"     "Germany"    
+ [6] "Estonia"     "Ireland"     "Greece"      "Spain"       "France"     
+[11] "Croatia"     "Italy"       "Cyprus"      "Latvia"      "Lithuania"  
+[16] "Luxembourg"  "Hungary"     "Malta"       "Netherlands" "Austria"    
+[21] "Poland"      "Portugal"    "Romania"     "Slovenia"    "Slovakia"   
+[26] "Finland"     "Sweden"      "Iceland"     "Norway"      "Switzerland"
+[31] "Serbia"      "Turkiye"    </code></pre>
+</div>
+</div>
+<section id="a.-relationship-visual-required" class="level3">
+<h3 class="anchored" data-anchor-id="a.-relationship-visual-required">A. Relationship Visual (Required)</h3>
+<blockquote class="blockquote">
+<p>Examples: scatterplot + trend line, scatter by subgroup, faceted scatter.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Relationship plot code here</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data,<span class="fu">aes</span>(<span class="at">x =</span> France,<span class="at">y =</span> Italy))<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relationship btw France and Italy"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"France Values"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Italy Values"</span> </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation (2–4 sentences):</strong> - The scatterplot shows how france emission relate to italy’s emission across all years. - each point represents each year and shows overall upwards trend tells when france emission increase then italy emission tends to increase. - The line says a positive linear relationship between them.</p>
+<p><strong>Why this plot type is appropriate (1–2 sentences):</strong> - Scatter plot is appropriate because it directly visualizes the relation between two numerical variables and with regression line helps reveal the overall trend. —</p>
+</section>
+<section id="b.-distribution-comparison-required" class="level3">
+<h3 class="anchored" data-anchor-id="b.-distribution-comparison-required">B. Distribution Comparison (Required)</h3>
+<blockquote class="blockquote">
+<p>Choose one: boxplot, violin, density comparison, faceting.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Year), <span class="at">y=</span> Emission,<span class="at">fill =</span> <span class="fu">factor</span>(Year)))<span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">alpha=</span> <span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution Of Emission by Year using Violin"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Emission"</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill=</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week7-visualisation_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretation (2–4 sentences):</strong> - The Violin plot shows how emission levels vary across different years.by showing both spread and density of data. - wider section in violin indicate year where emission values are more like in graph <strong>2015</strong> have wider section tells more emission.</p>
+<p><strong>Why this plot type is appropriate (1–2 sentences):</strong></p>
+</section>
+</section>
+<section id="violin-plot-is-appropriate-because-it-combines-the-advantage-of-boxplot-with-density-curve-which-allows-to-compare-both-summary-statistics-and-distribution-shapes." class="level2">
+<h2 class="anchored" data-anchor-id="violin-plot-is-appropriate-because-it-combines-the-advantage-of-boxplot-with-density-curve-which-allows-to-compare-both-summary-statistics-and-distribution-shapes.">Violin plot is appropriate because it combines the advantage of boxplot with density curve which allows to compare both summary statistics and distribution shapes.</h2>
+<section id="c.-trend-group-comparison-optional" class="level3">
+<h3 class="anchored" data-anchor-id="c.-trend-group-comparison-optional">C. Trend / Group Comparison (Optional)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional extra plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Explain only if included.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="narrative" class="level2">
+<h2 class="anchored" data-anchor-id="narrative">Narrative</h2>
+<p>Write a short narrative connecting your visuals into a coherent data story.</p>
+<p>Example structure (keep it simple):</p>
+<ul>
+<li><p>What question/theme the visuals address</p></li>
+<li><p>The visuals address country-level emission from 2014 to 2023.</p></li>
+<li><p>What the relationship plot reveals</p></li>
+<li><p>The plot shows a positive correlation between France and Italy emission ,that tell if emission rise in one country then other rises too.</p></li>
+<li><p>What the distribution plot clarifies</p></li>
+<li><p>Used violin plot shows how emission levels vary across different years.by showing both spread and density of data.</p></li>
+<li><p>Optional: what trend/group plot adds</p></li>
+<li><p>A closing insight</p></li>
+<li><h2 id="this-gives-clear-understanding-of-both-absolute-values-and-relative-trends." class="anchored">This gives clear understanding of both absolute values and relative trends.</h2></li>
+</ul>
+</section>
+<section id="responsible-design-notes" class="level2">
+<h2 class="anchored" data-anchor-id="responsible-design-notes">Responsible Design Notes</h2>
+<p>Provide brief bullet points about your design decisions:</p>
+<p>*Converting data into data_long which long format for flexible plotting multiple countries.</p>
+<p>*Used clean,minimal themes to reduce visual clutter.</p>
+<p>*included clear axies labels, titles, and legends</p>
+<hr>
+</section>
+<section id="responsible-use-of-ai-rve-note" class="level2">
+<h2 class="anchored" data-anchor-id="responsible-use-of-ai-rve-note">Responsible Use of AI (RVE Note)</h2>
+<p>Complete one of the two options below.</p>
+<section id="if-you-used-ai" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-used-ai"><strong>If you used AI:</strong></h3>
+<p>Include the following block for each interaction.</p>
+<pre><code>- Tool/model used: ChatGpt
+- Prompt (short paraphrase is OK):
+  
+  Explain the output step by step.
+  
+- What the AI generated:
+   Explained the output for scatter plot, violin plot word to word .
+   
+- How you verified it:
+   after explaination went to chats and crossed checked everything.
+- What you changed:
+   After understanding i wrote the description in my own words.
+   </code></pre>
+</section>
+<section id="if-you-did-not-use-ai" class="level3">
+<h3 class="anchored" data-anchor-id="if-you-did-not-use-ai"><strong>If you did NOT use AI:</strong></h3>
+<blockquote class="blockquote">
+<p><em>“I did not use AI for code or interpretation. All design decisions and commentary are my own.”</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="appendix-optional" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-optional">Appendix (Optional)</h2>
+<p>You may place additional plots, tests, or reproducibility info here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional extras</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sessionInfo()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+</section>
+<section id="end-of-file" class="level1">
+<h1><strong>END OF FILE</strong></h1>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

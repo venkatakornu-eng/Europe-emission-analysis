@@ -1,0 +1,290 @@
+---
+metadata-files: ["_metadata.yml"]
+title: "Week 2 – Dataset Exploration and First Wrangling"
+subtitle: "Selecting, Cleaning, and Understanding Your Data"
+author: "Venkata Santosh Kumar Kornu"
+---
+
+# Overview
+*Introduce the purpose of Week 2 and what this document covers.*
+
+- Key aims of this week  
+- Expected outcomes  
+- General encouragement statement
+
+---
+
+# Dataset Selection and Rationale
+## 1.1 Dataset choice
+*Explain what dataset you are using and why.*
+the dataset I have choose is from Eurostat - Greenhouse Gas Emission from transport,energy and agriculture and other industries . I took this dataset because it is important and more focusing topic which is essential for improving nature.
+
+### (Insert code cells – load dataset)
+```{r}
+# Example: load dataset
+library(readxl)
+data <- read_excel("data/raw/data_copy.xlsx")
+
+```
+
+
+```{r}
+      
+library(dplyr)
+str(data)
+nrow(data)
+ncol(data)
+```
+
+## 1.2 Justification
+
+Describe why this dataset suits your project idea.
+
+this data has everthing I want to do anaylsis like 
+it consist of 66 sheets which covers all three different type of emission like Co2, Methane, Nitrogenous oxide by different indrustries.
+
+# 2 First Glimpse of the Data
+## 2.1 Initial inspection
+
+Discuss the structure, dimensions, and variable types.
+
+(Insert code cells – glimpse, summary)
+```{r}
+# Example: check structure
+
+summary(data)
+
+
+```
+
+```{r}
+glimpse(data)
+```
+
+
+```{r}
+head(data, 10)
+```
+
+## 2.2 Observations
+
+Summarise key insights about shape, columns, and data types.
+The dataset consist of 33 column and 150 row by taking 15 sheets data and converting into one sheet
+data types is numeric and character type.
+
+# 3 Initial Data Wrangling
+
+Document cleaning, transformations, and reasoning.
+
+## 3.1 Cleaning
+
+Describe how you handled missing values, duplicates, formats.
+
+In my data,at first it didn't show me missing values because the character present in valuse ":", and then coverting ":" into NA , I found 45 missing values.
+
+and I used imputation method by using mean of respective features
+
+I checked for duplication and results return "FLASE" that mean no duplicates
+
+(Insert code cells – cleaning steps)
+
+```{r}
+
+data[data == ":"] <- NA
+colSums(is.na(data))
+
+
+
+
+```
+
+```{r}
+data_clean <- na.omit(data)
+
+year_cols <- 2:33   # adjust if your columns are different
+data[, year_cols] <- lapply(data[, year_cols], function(x) as.numeric(as.character(x)))
+```
+
+
+
+```{r}
+data$Turkiye <-
+  ifelse(is.na(data$Turkiye) ,  mean(data$Turkiye, na.rm = TRUE),data$Turkiye)
+
+data$Serbia <-
+  ifelse(is.na(data$Serbia) ,  mean(data$Serbia, na.rm = TRUE),data$Serbia)
+
+data$Switzerland <-
+  ifelse(is.na(data$Switzerland ) ,  mean(data$Switzerland , na.rm = TRUE),data$Switzerland)
+
+
+```
+
+
+```{r}
+data[data == ":"] <- NA
+colSums(is.na(data))    ##checking is there missing values
+```
+
+
+
+```{r}
+duplicated_row <- duplicated(data)
+
+any(duplicated_row)
+
+data[duplicated_row,]
+```
+
+
+
+## 3.2 Transformation, integration, validation
+
+Conceptual or implemented; note decisions or possible future steps.
+
+(Insert code cells – optional transformation)
+
+```{r}
+# derived variables or merges
+
+```
+
+## 3.3 Storing cleaned data
+
+Describe where you saved the processed file and why.
+the processed file is saved in processed folder in the data folder as per the insturtion.
+
+(Insert code cells – write processed file)
+
+```{r}
+# write cleaned dataset
+
+library(readr)
+data_joined <- data
+write_excel_csv(data_joined, "data/processed/cleaned_data.csv")
+```
+
+# 4 Exploratory Data Analysis (EDA)
+## 4.1 Variable identification
+
+List variable types and their roles.
+
+(Insert code cells – variable listing)
+```{r}
+# identify variable types
+glimpse(data)
+```
+
+## 4.2 Descriptive statistics
+
+Discuss central tendencies, dispersion, outliers.
+
+(Insert code cells – summarise numeric variables)
+```{r}
+# descriptive statistics
+summary(data)
+```
+## 4.3 Numerical analysis
+
+Discuss histograms and boxplots
+
+```{r}
+hist(
+  data$Germany,
+  main = "Total Emission ",
+  xlab = " Emission (years)"
+)
+```
+```{r}
+library(tidyr)
+library(dplyr)
+
+data_long <- data %>%
+  pivot_longer(
+    cols = -Year,
+    names_to = "Country",
+    values_to = "Emission"
+  )
+
+```
+
+
+
+```{r}
+boxplot(
+  Emission ~ Country,
+  data = data_long,
+  main = "Emission distribution by Country",
+  xlab = "Country", ylab = "Emission",
+  las = 2
+)
+```
+
+
+(Insert code cells - histograms and baxplots)
+
+## 4.4 Categorical analysis
+
+Discuss frequency distributions or group counts.
+
+(Insert code cells – counts or plots)
+
+```{r}
+# bar plot / counts
+data_summary <- data_long %>%
+  group_by(Country) %>%
+  summarise(mean_emission = mean(Emission, na.rm = TRUE))
+
+barplot(data_summary$mean_emission,
+        names.arg = data_summary$Country,
+        main = "Average Emission by Country",
+        ylab = "Mean Emission",
+        las = 2)
+
+
+```
+
+## 4.5 Interpretation
+
+Write short commentary linking patterns to your project context.
+
+# 5 Documentation and Reflection
+
+Capture reasoning, challenges, and decisions.
+
+## 5.1 What assumptions did you make?
+Assumptions are made in identifying the missing values after showing zero missing values after deep research got to know that values column consists some char ":" and replaced it with mean.
+
+## 5.2 What was easy or hard?
+loding data into r server is easy and using summary and glimpse made task easier to understand the data like data type , mean , medium, max and min. the hard part is formatting data , i have 66 sheets in that 21 sheets are CO2 which is taken and converted 15 sheets into one sheet.
+plots part is difficuilt to get info so couldn't able to do.
+
+## 5.3 What would you do differently next time?
+Next time,I will understand how plots should be done and get better understandable and meaningful analysis
+and will also add few more data sheets of different emission like methane etc
+
+
+# 6 Good Practice Reminders
+
+Checklist and reproducibility notes.
+
+* Comments in code 
+* Relative paths
+* Push and pull discipline
+* Consistent naming conventions
+
+# 7 Group Notes and Variations
+
+Describe context-specific adaptations or creative extensions.
+
+
+# 8 Final Checkpoint Before Submission
+
+Tick items off to ensure readiness.
+
+* Dataset in /data/raw/  YES
+* Cleaned dataset in /data/processed/ YES
+* HTML output in /outputs/ YES
+* Reflection written/  yes
+* Changes committed and pushed/ Yes
+

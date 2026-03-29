@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="ods-team-48 / Venkata Santosh Kumar Kornu/AKHILESWARA REDDY LINGIREDDY/SOURABH SHRINIVAS KULKARNI/">
+<meta name="dcterms.date" content="2025-11-05">
+
+<title>week_05</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="week_05_files/libs/clipboard/clipboard.min.js"></script>
+<script src="week_05_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="week_05_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="week_05_files/libs/quarto-html/popper.min.js"></script>
+<script src="week_05_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="week_05_files/libs/quarto-html/anchor.min.js"></script>
+<link href="week_05_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="week_05_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="week_05_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="week_05_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="week_05_files/libs/bootstrap/bootstrap-813c323200a87c37e262811031999de4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="week_05_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="week_05_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#imbalance-vs-bias" id="toc-imbalance-vs-bias" class="nav-link" data-scroll-target="#imbalance-vs-bias"><span class="header-section-number">0.1</span> Imbalance vs Bias</a></li>
+  <li><a href="#descriptive-distribution" id="toc-descriptive-distribution" class="nav-link" data-scroll-target="#descriptive-distribution"><span class="header-section-number">0.2</span> Descriptive distribution</a></li>
+  <li><a href="#fairness---random-split-seed" id="toc-fairness---random-split-seed" class="nav-link" data-scroll-target="#fairness---random-split-seed"><span class="header-section-number">0.3</span> Fairness - Random Split + Seed</a></li>
+  <li><a href="#reproducibility-log" id="toc-reproducibility-log" class="nav-link" data-scroll-target="#reproducibility-log"><span class="header-section-number">0.4</span> Reproducibility Log</a></li>
+  <li><a href="#hypothesis-testing-confidence-intervals" id="toc-hypothesis-testing-confidence-intervals" class="nav-link" data-scroll-target="#hypothesis-testing-confidence-intervals"><span class="header-section-number">0.5</span> Hypothesis Testing &amp; Confidence Intervals</a></li>
+  <li><a href="#model-1" id="toc-model-1" class="nav-link" data-scroll-target="#model-1"><span class="header-section-number">1</span> Model 1</a></li>
+  <li><a href="#model-2" id="toc-model-2" class="nav-link" data-scroll-target="#model-2"><span class="header-section-number">2</span> Model 2</a>
+  <ul class="collapse">
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2.1</span> Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">week_05</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ods-team-48 / Venkata Santosh Kumar Kornu/AKHILESWARA REDDY LINGIREDDY/SOURABH SHRINIVAS KULKARNI/ </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 5, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="overview">Overview</h2>
+<section id="what-this-file-is-for" class="level3" data-number="0.0.1">
+<h3 data-number="0.0.1" class="anchored" data-anchor-id="what-this-file-is-for"><span class="header-section-number">0.0.1</span> What this file is for</h3>
+<p>This week is hands-on with <strong>Bias</strong>,<strong>Fairness</strong>,<strong>Ethics</strong> <strong>&amp;</strong> <strong>Resproducibility</strong>. We have Did:</p>
+<ul>
+<li>Detect imbalance vs.&nbsp;bias and relate it to project purpose.</li>
+<li>Explain fairness notions (representation vs outcome fairness).</li>
+<li>Perform hypothesis tests and interpret confidence intervals.</li>
+<li>Use a fixed random seed to make analyses reproducible.</li>
+<li>Observe how different seeds affect results and train/test splits.</li>
+<li>Save a lightweight reproducibility log (session info) to your repo.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/processed/cleaned_data.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 150
+Columns: 33
+$ Year        &lt;dbl&gt; 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023…
+$ Belgium     &lt;dbl&gt; 69202786.1, 71895703.3, 71627061.7, 71658116.7, 73544083.5…
+$ Bulgaria    &lt;dbl&gt; 44482999.1, 47144934.2, 44822120.9, 46720379.4, 42562493.0…
+$ Czechia     &lt;dbl&gt; 85070438, 83960285, 86095391, 84522238, 85917613, 80891193…
+$ Denmark     &lt;dbl&gt; 64676053, 68280863, 73463290, 72654851, 73425967, 70299345…
+$ Germany     &lt;dbl&gt; 662356551, 666026516, 657452632, 649273598, 627782259, 565…
+$ Estonia     &lt;dbl&gt; 18498406.48, 15290103.52, 16962030.11, 18053840.73, 171288…
+$ Ireland     &lt;dbl&gt; 34023275.50, 35807246.72, 39796178.43, 41808714.75, 425013…
+$ Greece      &lt;dbl&gt; 74441473.76, 70951375.82, 68985864.96, 74376892.38, 739977…
+$ Spain       &lt;dbl&gt; 200881452, 215782322, 204417582, 219079617, 212811391, 196…
+$ France      &lt;dbl&gt; 253017054.3, 253820658.1, 253953753.3, 263741587.5, 256242…
+$ Croatia     &lt;dbl&gt; 13118487.3, 12977202.7, 13042454.5, 13659990.3, 12705855.5…
+$ Italy       &lt;dbl&gt; 257962868, 262962327, 260583344, 261483093, 256155930, 249…
+$ Cyprus      &lt;dbl&gt; 5442692.42, 5250016.58, 5594924.22, 5825333.14, 5874594.89…
+$ Latvia      &lt;dbl&gt; 6955643.01, 7251349.11, 7083570.54, 7215957.33, 7823740.00…
+$ Lithuania   &lt;dbl&gt; 12026747.06, 12622365.30, 12296092.30, 12958343.10, 141055…
+$ Luxembourg  &lt;dbl&gt; 6780910.00, 7631415.00, 7474114.00, 7450554.00, 7588714.00…
+$ Hungary     &lt;dbl&gt; 35922158.6, 37842949.0, 37505459.5, 39524581.0, 39888109.4…
+$ Malta       &lt;dbl&gt; 2427883.48, 1687126.99, 1345031.45, 1488089.10, 1615909.14…
+$ Netherlands &lt;dbl&gt; 147652569, 153250033, 152738167, 150141833, 146206402, 143…
+$ Austria     &lt;dbl&gt; 44339328.2, 45406103.5, 44618393.3, 47695358.1, 45168202.9…
+$ Poland      &lt;dbl&gt; 269909388, 273372566, 284120186, 300712032, 300861879, 287…
+$ Portugal    &lt;dbl&gt; 42545787, 46848143, 44624918, 49669685, 46103948, 42352945…
+$ Romania     &lt;dbl&gt; 66203202.4, 64824876.9, 63038788.3, 65048380.7, 64811227.6…
+$ Slovenia    &lt;dbl&gt; 9750627.34, 9923024.34, 10392081.77, 10598340.59, 10875014…
+$ Slovakia    &lt;dbl&gt; 26665689.06, 27806964.93, 28362529.42, 29340846.19, 297070…
+$ Finland     &lt;dbl&gt; 44900715.3, 41641665.2, 44945858.6, 42234732.8, 43604005.6…
+$ Sweden      &lt;dbl&gt; 37062214.2, 37544045.9, 38828540.6, 37409442.0, 37257668.5…
+$ Iceland     &lt;dbl&gt; 4247572.52, 4495222.77, 5131369.32, 5502454.26, 5744632.24…
+$ Norway      &lt;dbl&gt; 53786251, 60809262, 52388807, 55009483, 58284266, 58492593…
+$ Switzerland &lt;dbl&gt; 27052658.14, 26746007.98, 26938847.50, 26450944.43, 261543…
+$ Serbia      &lt;dbl&gt; 35919684.6, 43665398.0, 44757929.0, 45630398.4, 45175655.5…
+$ Turkiye     &lt;dbl&gt; 280146977, 310123230, 323151517, 337000661, 333548997, 312…</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>Year,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Country"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Emission"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="imbalance-vs-bias" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="imbalance-vs-bias"><span class="header-section-number">0.1</span> Imbalance vs Bias</h2>
+</section>
+<section id="descriptive-distribution" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="descriptive-distribution"><span class="header-section-number">0.2</span> Descriptive distribution</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(data_long<span class="sc">$</span>Country)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(tbl, <span class="at">main =</span> <span class="st">"Group Distribution (Country)"</span>, <span class="at">ylab =</span> <span class="st">"Count"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_05_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="840"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(tbl), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Austria     Belgium    Bulgaria     Croatia      Cyprus     Czechia 
+       0.03        0.03        0.03        0.03        0.03        0.03 
+    Denmark     Estonia     Finland      France     Germany      Greece 
+       0.03        0.03        0.03        0.03        0.03        0.03 
+    Hungary     Iceland     Ireland       Italy      Latvia   Lithuania 
+       0.03        0.03        0.03        0.03        0.03        0.03 
+ Luxembourg       Malta Netherlands      Norway      Poland    Portugal 
+       0.03        0.03        0.03        0.03        0.03        0.03 
+    Romania      Serbia    Slovakia    Slovenia       Spain      Sweden 
+       0.03        0.03        0.03        0.03        0.03        0.03 
+Switzerland     Turkiye 
+       0.03        0.03 </code></pre>
+</div>
+</div>
+<p>The file have equal or balanced number of values among all country and equal amount of data collected in all country. There is no difference among countries. There is no <strong>Bias</strong> in the data.</p>
+</section>
+<section id="fairness---random-split-seed" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="fairness---random-split-seed"><span class="header-section-number">0.3</span> Fairness - Random Split + Seed</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>) <span class="co"># ensures your peers obtain the same random split</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data_cat <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="fu">n</span>(), <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data_cat <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(group) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">avg_Germany =</span> <span class="fu">mean</span>(Germany, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["group"],"name":[1],"type":["chr"],"align":["left"]},{"label":["avg_Germany"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"A","2":"71273452"},{"1":"B","2":"84076017"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>we have created or splitted the data into two group that is Group A and Group B</p>
+<p>Group A is 71273452 Group B is 84076017</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Germany <span class="sc">~</span> group, <span class="at">data =</span> data_cat,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Germany Emissions by Group"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Group"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Emission"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"lightgreen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="week_05_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="840"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This graph showing boxplot of to different groups.</p>
+</section>
+<section id="reproducibility-log" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="reproducibility-log"><span class="header-section-number">0.4</span> Reproducibility Log</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sample_data <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">sample_n</span>(data_long, <span class="dv">30</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) Simple model</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(Emission <span class="sc">~</span> Year, <span class="at">data =</span> sample_data)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error   t value  Pr(&gt;|t|)
+(Intercept) 6619647225 5518056721  1.199634 0.2403346
+Year          -3271592    2732972 -1.197082 0.2413115</code></pre>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (3) Save reproducibility details (seed + session info)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">"session-info.txt"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"=== Reproducibility Log ===</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Random seed used: 42</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Date:"</span>, <span class="fu">Sys.Date</span>(), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm file creation (returns TRUE if created)</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"session-info.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>The Intercept is 6619647225 that means emission happen at 0 year.It just helps define the regression line.</p>
+<p>The Slop is -3271592 This means decrease by about 3.27 million units per year on average.</p>
+<p>t value is -1.197 that means how strongly year explains Emission change.</p>
+</section>
+<section id="hypothesis-testing-confidence-intervals" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="hypothesis-testing-confidence-intervals"><span class="header-section-number">0.5</span> Hypothesis Testing &amp; Confidence Intervals</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(data<span class="sc">$</span>Year, data<span class="sc">$</span>Germany)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  data$Year and data$Germany
+t = -0.64974, df = 148, p-value = 0.5169
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.2117839  0.1078508
+sample estimates:
+        cor 
+-0.05333254 </code></pre>
+</div>
+</div>
+<p>The Pearson’s correlation between Year and Germany in your dataset. cor = -0.0533, this says very weak negative correlation between year and Germany where year increase the germany values tends to decrease.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Emission <span class="sc">~</span> Country, <span class="at">data =</span> <span class="fu">subset</span>(data_long, Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Belgium"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Emission by Country
+t = -5.2878, df = 153.04, p-value = 4.206e-07
+alternative hypothesis: true difference in means between group Belgium and group Germany is not equal to 0
+95 percent confidence interval:
+ -93765987 -42758563
+sample estimates:
+mean in group Belgium mean in group Germany 
+              9071058              77333333 </code></pre>
+</div>
+</div>
+<p>The Weich t-test compares the Emission betwween Belgium and Germany. The p-value (<strong>4.206e-07</strong>) which is very small than 0.05 this means the difference in emission between Belgium and Germany is <strong>highly statiscally</strong> significant.</p>
+<p>The mean of both Belgium (9071058) and Germany (77333333) says Germany emits far more than Belgium.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Emission <span class="sc">~</span> Year, <span class="at">data =</span> dplyr<span class="sc">::</span><span class="fu">sample_n</span>(data_long, <span class="dv">30</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Emission <span class="sc">~</span> Year, <span class="at">data =</span> dplyr<span class="sc">::</span><span class="fu">sample_n</span>(data_long, <span class="dv">30</span>))</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Estimate   Std. Error   t value  Pr(&gt;|t|)
+(Intercept) 1692630790.5 1632669765.0  1.036726 0.3087346
+Year           -836756.2     808878.8 -1.034464 0.3097716</code></pre>
+</div>
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m2)<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Estimate   Std. Error    t value  Pr(&gt;|t|)
+(Intercept) -1006991705.2 1538975105.1 -0.6543262 0.5182406
+Year             501903.5     762673.5  0.6580843 0.5158586</code></pre>
+</div>
+</div>
+</section>
+<section id="model-1" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Model 1</h1>
+<p>Intercept is 1692630790.5</p>
+<p>Year is -836756 this mean for every increase in unit in year , the dependent variable decreases by 836756 units.</p>
+<p>p-value is 0.3098 &gt; 0.05, so not statistically significant.</p>
+</section>
+<section id="model-2" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Model 2</h1>
+<p>Intercept is -1006991705.2</p>
+<p>Year is +501903 this mean for every increase in unit in year , the dependent variable increase by 501903 units.</p>
+<p>p-value is 0.5159 &gt; 0.05, so not statistically significant.</p>
+<p>From both <strong>Model 1</strong> is slightly decreased per year and <strong>Model 2</strong> is slightly increase per year.</p>
+<section id="conclusion" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2.1</span> Conclusion</h2>
+<ul>
+<li>Changing the random seed changes which subset of data gets sampled, slightly altering the model. Fixing a seed (e.g., set.seed(42)) makes results reproducible.</li>
+<li>Equal data distribution across countries supports fair analysis.</li>
+<li>Simple linear regression indicates minor year-to-year variation in emissions</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="week_05_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

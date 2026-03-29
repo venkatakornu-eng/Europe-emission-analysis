@@ -1,0 +1,167 @@
+---
+title: "Week 3 – Understanding Your Data: Provenance, Quality & Risks"
+author: "ods-team-48 / Venkata Santosh Kumar Kornu/AKHILESWARA REDDY LINGIREDDY/SOURABH SHRINIVAS KULKARNI/"
+
+date: "`r format(Sys.Date())`"
+format:
+  html:
+    toc: false
+    toc-depth: 2
+---
+
+## Overview {.unnumbered}
+
+::: callout-note
+### What this file is for
+
+This week’s focus is more on **reflection and documentation**, and less or not on coding.\
+You will describe where your data comes from, how trustworthy it is, and what risks or limitations it may carry.
+:::
+
+---
+
+# Dataset Overview
+
+A short paragraph (3–5 sentences) describing:
+
+- What your dataset is about\
+- Who published it\
+- When and how you accessed it\
+- Why it fits your project idea
+
+This dataset contains annual greenhouse gas emissions by economic activity (NACE classification) for European Union countries. It is published by Eurostat, the official statistical authority of the European Commission. I accessed the dataset in October 2025 through the Eurostat Data Browser. This dataset is suitable for my project because I aim to analyse and evaluate emission reduction trends across European countries over time and it covers alot of industries which is requried for analysis and had 66 sheets with three type of emissions like CO2, Methane, NO2 which is perfect for my project ideology.
+The data consists from 2014 to 2023 years. 
+
+---
+
+# Provenance Summary
+
+Use the table below to record evidence and assessments about your dataset. You can edit or expand it as needed. Please provide short support statement (1-2 lines each) for your verditcs.
+
+| Criterion | Evidence Checked | Verdict |
+|:--|:--|:--|
+| **Origin & Authority** | Who created the dataset? What was their purpose or methodology? | ✅ / ⚠️ / ❌ |
+| **Coverage & Completeness** | Time span, geography, variables, sample size, missingness | ✅ / ⚠️ / ❌ |
+| **Timeliness & Stability** | Last update date, update frequency, schema consistency | ✅ / ⚠️ / ❌ |
+| **Format & Access** | CSV/Excel/JSON/API? Can you reproduce the import path? | ✅ / ⚠️ / ❌ |
+| **Documentation & Versioning** | Data dictionary, changelog, DOI/version number | ✅ / ⚠️ / ❌ |
+| **License & Attribution** | License type, URL, and required credit statement | ✅ / ⚠️ / ❌ |
+| **Sensitivity & Ethics** | Contains or could infer personal or sensitive information? | ✅ / ⚠️ / ❌ |
+
+| Criterion | Evidence Checked | Verdict |
+
+Origin & Authority| Published by Eurostat|✅  trusted Instutional source|
+
+Coverage & Completeness|Covers EU countries; long time series by NACE activity| ✅ Sufficient for analysis|
+
+Timeliness & Stability|last update data 2024,accessed in oct-2025|✅ Up-to-date and stable|
+
+Format & Access| there are two formate csv and excel,I took Excel|  ✅ Open and machine-readable|
+
+Documentation & Versioning| Proper metadata, methodology notes available in Eurostat website|✅  well-documented|
+
+License & Attribution|Free to use with attribution under Eurostat reuse policy|✅ Open license|
+
+Sensitivity & Ethics|no personal or sensitive data|✅ No ethical concerns|
+
+---
+
+
+## Understanding Each Criterion
+
+- **Origin & Authority:** Identify who created or published the dataset, and why it exists. Check for official sources or credible research institutions.  
+- **Coverage & Completeness:** Consider whether the data spans a sufficient period, geography, and number of observations for your analysis. Missing years or regions may signal gaps.  
+- **Timeliness & Stability:** When was it last updated? Has the structure changed over time? Outdated or unstable sources may reduce reliability.  
+- **Format & Access:** Ensure the format (CSV, JSON, etc.) can be opened reproducibly with R/Python. Record any URLs or APIs used.  
+- **Documentation & Versioning:** Look for accompanying documentation (README, codebook, changelog) or version numbers that clarify structure.  
+- **License & Attribution:** Record the license name (e.g., CC BY 4.0, OGL v3.0) and link. Copy the required attribution statement if available.  
+- **Sensitivity & Ethics:** Note whether the data includes personal, identifiable, or ethically sensitive information. If yes, explain how you’ll handle it responsibly.  
+
+---
+
+## Licensing Details
+
+Fill in the fields below using information from your dataset’s source page. Copy the exact text if provided.
+
+**License Name:**  
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+**License Link:** 
+https://creativecommons.org/licenses/by/4.0/
+
+**Attribution Text (if provided):** 
+Source: Eurostat. Data extracted from dataset code env_ac_ainah_r2
+
+**Notes on Limitations (e.g., Non-Commercial):**  
+Re-use permitted for commercial and non-commercial purposes. Must provide attribution and indicate if changes were made. Data may include flags for estimated or imputed values and breaks in time series.
+
+
+::: {.callout-tip}
+If you cannot find a license, state:  
+*“No explicit license visible; flagged for clarification or restricted use.”*
+:::
+
+---
+
+# Early Risks Reflection
+
+Write about **150 words** identifying key risks or concerns, such as: 
+
+- Missing data or uneven coverage\
+- Potential bias or lack of representativeness\
+- Ethical or licensing uncertainties\
+- How these issues might affect later analysis
+
+In the dataset I used is Eurostat Greenhouse Gas Emissions presents several key risks and concerns that could impact analysis. First while checking missing values it showed no missing values but when I go through the dataset I see missing values and got to know that in values column it consist character that is ":" that why not showing missing values and then i assigned ":" to NA and then filled with mean of the column.potentially leading to gaps or skewed temporal trends.Second, there is a risk of bias or lack of representativeness; larger or more industrialized countries may have more complete and accurate data, while smaller or developing nations could be underrepresented, affecting cross-country comparisons.These issues can influence downstream analysis, such as trend estimation, forecasting, or policy evaluation
+
+
+> *Tip:* Think “If someone reused our results, what could mislead them?”
+
+
+---
+
+# (Optional) API Comparison
+
+If applicable, you may compare data access via direct download vs API.  
+Below is an optional R code snippet to illustrate how APIs differ from static downloads.
+
+```{r}
+#| eval: false
+library(httr)
+library(jsonlite)
+library(readr)
+
+# Download CSV (static)
+csv_data <- read_csv("https://example.com/data.csv")
+
+# Access via API (dynamic)
+response <- GET("https://api.example.com/data")
+api_data <- fromJSON(content(response, "text"))
+
+# Compare basic structures
+names(csv_data)
+names(api_data)
+```
+
+Summarise your observations (e.g., freshness, column structure, metadata differences).
+
+---
+
+# (Optional) Scouting / Alternative Data
+
+List any other datasets you explored (name, link, why rejected or unsuitable). These could be the datasets that are somehow comparable to what you are currently using.\
+A short bullet list is enough.
+
+| Dataset / Source | Relation to Main Dataset | Outcome / Issues |
+|:-----------------|:-------------------------|:-----------------|
+|                  |                          |                  |
+
+I have gone through Our World in Data – Renewable Energy dataset taken one dataset from website , I didn't rejected that dataset, I will use that after few weeks to integrate with my now using dataset Eurostat – Greenhouse Gas Emissions to find which country is in the balance emission reduction  and renewable energy.
+and predicte which will be in 2035.
+
+ 
+
+
+
+
+---
