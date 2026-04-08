@@ -27,53 +27,54 @@ Excel (Data Cleaning & Preprocessing)
 Eurostat Dataset
 
 # ⚙️ Workflow
-1. Data Cleaning & Preparation
 
-Removed missing and inconsistent values
+### 1. Data Cleaning & Preparation
 
-Converted data formats (TSV → Excel)
+- Removed missing and inconsistent values
 
-Structured dataset for analysis
+- Converted data formats (TSV → Excel)
 
-2. Data Transformation
+- Structured dataset for analysis
 
-Merged selected sheets into a single dataset
+### 2. Data Transformation
 
-Normalized values for comparison across countries
+- Merged selected sheets into a single dataset
 
-3. Exploratory Data Analysis (EDA)
+- Normalized values for comparison across countries
 
-Trend analysis of emissions over years
+### 3. Exploratory Data Analysis (EDA)
 
-Country-wise comparison 
+- Trend analysis of emissions over years
 
-Distribution analysis using boxplots
+- Country-wise comparison 
 
-4. Statistical Analysis
+- Distribution analysis using boxplots
 
-Correlation analysis (Year vs Emission)
+### 4. Statistical Analysis
 
-Linear regression modelling
+- Correlation analysis (Year vs Emission)
 
-Hypothesis testing (t-test)
+- Linear regression modelling
+
+- Hypothesis testing (t-test)
 
 # 📈 Key Insights
 
-Emission trends vary significantly across European countries
+- Emission trends vary significantly across European countries
 
-Some countries show gradual reduction, while others fluctuate
+- Some countries show gradual reduction, while others fluctuate
 
-Time alone is not a strong predictor of emissions → multiple external factors influence trends
+- Time alone is not a strong predictor of emissions → multiple external factors influence trends
 
 # 📌 Key Features
 
-Real-world environmental dataset
+- Real-world environmental dataset
 
-Reproducible analysis using R
+- Reproducible analysis using R
 
-Data-driven insights for sustainability
+- Data-driven insights for sustainability
 
-Cleaned and structured dataset for further research
+- Cleaned and structured dataset for further research
 
 # 📂 Project Structure
 
@@ -87,17 +88,17 @@ Cleaned and structured dataset for further research
 
 # 🚀 Future Work
 
-Integrate renewable energy dataset (Our World in Data)
+- Integrate renewable energy dataset (Our World in Data)
 
-Build predictive models for emission trends
+- Build predictive models for emission trends
 
-Develop interactive dashboards
+- Develop interactive dashboards
 
 # 📜 License & Attribution
 
-Data sourced from Eurostat.
+- Data sourced from Eurostat.
 
-Re-use permitted under CC BY 4.0 with proper attribution.
+- Re-use permitted under CC BY 4.0 with proper attribution.
 
 # 🙌 Author
 Venkata Santosh Kumar
